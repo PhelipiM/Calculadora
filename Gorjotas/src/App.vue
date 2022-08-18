@@ -1,41 +1,57 @@
 <script>
-
-function calcular(){
-  let totalConta = document.getElementyById("valorConta").value;
-  let gorjeta = document.getElementById("gorjeta").value;
-  let pessoas = document.getElementById("numPessoas").value;
-}
-
-document.getElementById("salvar").onclick = function(){
-  calcular();
-}
+export default {
+ data(){
+  return {
+    valorConta: 0,
+    Gorjeta: 0,
+    numPessoas: 1,
+  };
+ },
+ methods: {
+  calcular(){
+    valorGorjeta = valorConta * (Gorjeta / valorConta);
+    valorTotal = (valorConta + valorGorjeta) / numPessoas;
+  }
+ }
+};
 
 
 </script>
 
 <template>
-  <div id="main" data-v-app="">
-    <h1 selecoes="">Calculadora de Gorjetas</h1>
-    <form action="" class="tipForm" selecoes="">
-      <label for="valorConta" selecoes="">Qual o valor da conta?</label>
-        <input name="valorConta" type="number" selecoes="">
-      <label for="percentageService" selecoes="">Como foi o serviço?</label>
-      <select selecoes="" id="gorjeta">
-        <option value="30" selecoes="">30% (Excepcional)</option>
-        <option value="25" selecoes="">25% (Mais do que bom)</option>
-        <option value="20" selecoes="">20% (Bom)</option>
-        <option value="15" selecoes="">15% (OK)</option>
-        <option value="10" selecoes="">10% (Ruim)</option>
-        <option value="5" selecoes="">5% (Péssimo)</option>
-      </select>
-      <label for="qtyPeople" selecoes="">Quantas pessoas estão pagando a conta?</label>
-      <input name="qtyPeople" type="number" selecoes="" id="numPessoas">
+  <div id="main">
+    <form>
+
+      <label>
+        <p>Qual o preço do jantar?</p>
+        <input type="number" id="valorConta">
+      </label>
+
+      <label>
+        <p>Qual a gorjeta?</p>
+        <select id="valorGorjeta">
+          <option selected value="30">30% Ótimo serviço</option>
+          <option value="25">25% Ótimo serviço</option>
+          <option value="20">20% Ótimo serviço</option>
+          <option value="15">15% Ótimo serviço</option>
+          <option value="10">10% Ótimo serviço</option>
+          <option value="5">5% Ótimo serviço</option>
+        </select>
+      </label>
+
+      <label>
+        <p>Quantas pessoas vão dividir a conta?</p>
+        <input type="number" id="numPessoas">
+      </label>
+
+      <label>
+        <button type="button" @click="calcularJantar">Calcular</button>
+      </label>
+
+      <label >
+        <span id="resultado">0.00</span>
+      </label>
+
     </form>
-    <div class="result" selecoes=""> Valor da conta:
-      <span class="billValuePerPerson" selecoes="">R$ 0.00 por pessoa</span>
-    </div>
-    <div class="calculo" selecoes="">
-      <button id="salvar"> Calcular </button>
-    </div>
   </div>
 </template>
