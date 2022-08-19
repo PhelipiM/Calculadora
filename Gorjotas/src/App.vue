@@ -9,8 +9,19 @@ export default {
  },
  methods: {
   calcular(){
-    valorGorjeta = valorConta * (Gorjeta / valorConta);
+    const valorConta = this.valorConta;
+    const Gorjeta = this.Gorjeta;
+    const numPessoas = this.numPessoas;
+    let valorGorjeta = 0;
+    let valorTotal= {};
+
+    valorGorjeta = valorConta * (Gorjeta / 100);
     valorTotal = (valorConta + valorGorjeta) / numPessoas;
+
+    console.log(valorTotal);
+
+    document.getElementById("resultado").innerHTML = valorTotal;
+
   }
  }
 };
@@ -24,12 +35,12 @@ export default {
 
       <label>
         <p>Qual o preço do jantar?</p>
-        <input type="number" id="valorConta">
+        <input type="number" v-model="valorConta" id="valorConta">
       </label>
 
       <label>
         <p>Qual a gorjeta?</p>
-        <select id="valorGorjeta">
+        <select v-model="Gorjeta" id="valorGorjeta">
           <option selected value="30">30% Ótimo serviço</option>
           <option value="25">25% Ótimo serviço</option>
           <option value="20">20% Ótimo serviço</option>
@@ -41,15 +52,15 @@ export default {
 
       <label>
         <p>Quantas pessoas vão dividir a conta?</p>
-        <input type="number" id="numPessoas">
+        <input v-model="numPessoas" type="number" id="numPessoas">
       </label>
 
       <label>
-        <button type="button" @click="calcularJantar">Calcular</button>
+        <button type="button" @click="calcular">Calcular</button>
       </label>
 
-      <label >
-        <span id="resultado">0.00</span>
+      <label>
+        R$:<span id="resultado"> 0.00 </span>
       </label>
 
     </form>
