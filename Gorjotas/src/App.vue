@@ -3,7 +3,7 @@ export default {
  data(){
   return {
     valorConta: 0,
-    Gorjeta: 0,
+    Gorjeta: 15,
     numPessoas: 1,
   };
  },
@@ -18,6 +18,9 @@ export default {
     valorGorjeta = valorConta * (Gorjeta / 100);
     valorTotal = (valorConta + valorGorjeta) / numPessoas;
 
+    valorTotal = Math.round(valorTotal * 100) / 100;
+    valorTotal = valorTotal.toFixed(2);
+
     console.log(valorTotal);
 
     document.getElementById("resultado").innerHTML = valorTotal;
@@ -30,7 +33,11 @@ export default {
 </script>
 
 <template>
-  <div id="main">
+
+  <div class="main">
+
+    <h1><i><strong>"Gorjota"</strong></i></h1>
+
     <form>
 
       <label>
@@ -41,12 +48,12 @@ export default {
       <label>
         <p>Qual a gorjeta?</p>
         <select v-model="Gorjeta" id="valorGorjeta">
-          <option selected value="30">30% Ótimo serviço</option>
-          <option value="25">25% Ótimo serviço</option>
-          <option value="20">20% Ótimo serviço</option>
-          <option value="15">15% Ótimo serviço</option>
-          <option value="10">10% Ótimo serviço</option>
-          <option value="5">5% Ótimo serviço</option>
+          <option value="30">30% Ótimo serviço</option>
+          <option value="25">25% Muito bom</option>
+          <option value="20">20% Bom</option>
+          <option value="15">15% Aceitável</option>
+          <option value="10">10% Ruim</option>
+          <option value="5">5% "Meh"</option>
         </select>
       </label>
 
@@ -56,13 +63,57 @@ export default {
       </label>
 
       <label>
-        <button type="button" @click="calcular">Calcular</button>
-      </label>
-
-      <label>
-        R$:<span id="resultado"> 0.00 </span>
+        <p>Calcular:</p>
+        <button type="button" @click="calcular">R$:<span id="resultado">0.00</span></button>
       </label>
 
     </form>
+
   </div>
+
 </template>
+
+<style scoped>
+
+  .main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  input, select {
+    margin-bottom: 30px;
+  }
+
+  input, select, button {
+    width: 250px;
+    height: 25px;
+    font-size: 18px;
+    border: 1px black solid;
+    border-radius: 2px;
+    text-align: center;
+    transition: 0.25s;
+    cursor: pointer;
+  }
+
+  button {
+    background-color: #32a838;
+    height: 50px;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  button:hover {
+    background-color: #29802d;
+  }
+
+</style>
