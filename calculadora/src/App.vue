@@ -84,7 +84,7 @@ export default {
     padding: 25px;
     border:solid;
     border-radius: 20px;
-     background-color: #ebe5e5 ;
+     background-color: #e9e9e9 ;
     
   }
 
