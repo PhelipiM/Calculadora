@@ -3,20 +3,20 @@ export default {
  data(){
   return {
     valorConta: 0,
-    Gorjeta: 15,
-    numPessoas: 1,
+    Gorjeta: 20,
+    Pessoas: 1,
   };
  },
  methods: {
   calcular(){
     const valorConta = this.valorConta;
     const Gorjeta = this.Gorjeta;
-    const numPessoas = this.numPessoas;
+    const Pessoas = this.Pessoas;
     let valorGorjeta = 0;
     let valorTotal= {};
 
     valorGorjeta = valorConta * (Gorjeta / 100);
-    valorTotal = (valorConta + valorGorjeta) / numPessoas;
+    valorTotal = (valorConta + valorGorjeta) / Pessoas;
 
     valorTotal = Math.round(valorTotal * 100) / 100;
     valorTotal = valorTotal.toFixed(2);
@@ -36,35 +36,35 @@ export default {
 
   <div class="main">
 
-    <h1><i><strong>"Gorjota"</strong></i></h1>
+    <h3>Calculadora</h3>
 
     <form>
 
       <label>
-        <p>Qual o preço do jantar?</p>
+        <p>Preço do jantar</p>
         <input type="number" v-model="valorConta" id="valorConta">
       </label>
 
       <label>
-        <p>Qual a gorjeta?</p>
+        <p>Gorjeta  </p>
         <select v-model="Gorjeta" id="valorGorjeta">
           <option value="30">30% Ótimo serviço</option>
           <option value="25">25% Muito bom</option>
           <option value="20">20% Bom</option>
           <option value="15">15% Aceitável</option>
           <option value="10">10% Ruim</option>
-          <option value="5">5% "Meh"</option>
+          <option value="5">5% "Eca"</option>
         </select>
       </label>
 
       <label>
-        <p>Quantas pessoas vão dividir a conta?</p>
-        <input v-model="numPessoas" type="number" id="numPessoas">
+        <p>Pessoas que vão dividir a conta</p>
+        <input v-model="Pessoas" type="number" id="Pessoas">
       </label>
 
       <label>
         <p>Calcular:</p>
-        <button type="button" @click="calcular">R$:<span id="resultado">0.00</span></button>
+        <button type="button" @click="calcular">R$:<span id="resultado">0,00</span></button>
       </label>
 
     </form>
@@ -74,7 +74,7 @@ export default {
 </template>
 
 <style scoped>
-
+  
   .main {
     position: absolute;
     top: 50%;
@@ -82,11 +82,13 @@ export default {
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 25px;
-    border-radius: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border:solid;
+    border-radius: 20px;
+     background-color: #ebe5e5 ;
+    
   }
 
-  h1 {
+  h3 {
     font-size: 50px;
   }
 
